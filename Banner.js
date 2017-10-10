@@ -27,6 +27,8 @@ class Banner extends React.Component {
         super(props);
         this.images = props.banners.map((banner) => banner.image);
         this.titles = props.banners.map((banner) => banner.title);
+        this.containerW = props.containerW;
+        this.containerH = this.containerW*362/1080;
     }
 
     render() {
@@ -34,7 +36,6 @@ class Banner extends React.Component {
             return (
                 <TouchableOpacity
                     activeOpacity={1}
-                    style={{flex: 1}}
                     key={'b_image_'+index}
                     onPress={
                         () => {
@@ -43,7 +44,7 @@ class Banner extends React.Component {
                         }
                     }
                 >
-                    <Image style={styles.image} source={typeof(image) == 'string' ? {uri: image} : image} />
+                    <Image style={{width:this.containerW, height:this.containerH, resizeMode:'contain'}} source={typeof(image) == 'string' ? {uri: image} : image} />
                 </TouchableOpacity>
             );
         });
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     image: {
-        flex: 1,
+        resizeMode:'contain',
     },
 });
 
