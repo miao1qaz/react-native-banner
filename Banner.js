@@ -28,7 +28,7 @@ class Banner extends React.Component {
         this.images = props.banners.map((banner) => banner.image);
         this.titles = props.banners.map((banner) => banner.title);
         this.containerW = props.containerW;
-        this.containerH = this.containerW*362/1080;
+        this.containerH = this.containerW*540/1040;
     }
 
     render() {
