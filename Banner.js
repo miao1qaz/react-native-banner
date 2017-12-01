@@ -28,7 +28,9 @@ class Banner extends React.Component {
         this.images = props.banners.map((banner) => banner.image);
         this.titles = props.banners.map((banner) => banner.title);
         this.containerW = props.containerW;
-        this.containerH = this.containerW*540/1040;
+
+        this.ratio = props.ratio;
+        this.containerH = (this.ratio)? this.containerW*this.ratio :this.containerW*540/1040;
     }
 
     render() {
@@ -39,7 +41,7 @@ class Banner extends React.Component {
                     key={'b_image_'+index}
                     onPress={
                         () => {
-                            this.props.intent && this.props.intent(index, this.banners);
+                            this.props.intent && this.props.intent(index, this.props.banners[index]);
                             // this.props.banners[index].intent && this.props.banners[index].intent(index);
                         }
                     }
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
     },
     image: {
         resizeMode:'contain',
-		
+
     },
 });
 
